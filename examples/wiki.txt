@@ -1,0 +1,17 @@
+-u https://ru.wikibooks.org/wiki/Реализации_алгоритмов -l 2 -o d:\download\torrent\books\alg\wiki
+#-u https://en.wikibooks.org/wiki/Algorithm_Implementation
+-t flatdirs
+--debug
+-r &action=
+-r /Служебная:
+-r /Викиучебник
+-r /Заглавная_страница
+-r /Каталог_учебников
+-r /Кулинарная_книга
+-r /AmigaOS
+-r /BitTorrent
+-r /Blender_
+-r /Файл:Wikipedia-logo
+-r /Файл:Commons-logo
+-r /AROS
+

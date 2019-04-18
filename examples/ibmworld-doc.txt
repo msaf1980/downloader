@@ -1,0 +1,4 @@
+-l 1 --l-o 2 
+-u http://mylinuxprog.blogspot.ru/2014/01/python.html 
+-u https://www.ibm.com/developerworks/ru/library/l-python_details_10/ -r ".*" -e l-python_details
+

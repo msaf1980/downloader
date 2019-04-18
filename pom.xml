@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>downloader</groupId>
+    <artifactId>downloader</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-compiler-plugin-version>2.3.2</maven-compiler-plugin-version>
+      	<jsoup.version>1.9.2</jsoup.version>
+        <junit.version>4.12</junit.version>
+    </properties>
+    <dependencies>
+  	<dependency>
+    	<groupId>org.jsoup</groupId>
+        <artifactId>jsoup</artifactId>
+    	<version>${jsoup.version}</version>
+  	</dependency>
+	<!-->dependency>
+		<groupId>org.apache.logging.log4j</groupId>
+		<artifactId>log4j-core</artifactId>
+		<version>${log4j.version}</version>
+	</dependency-->
+	<dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${junit.version}</version>
+		<scope>test</scope>
+	</dependency>
+	<!-- >dependency>
+      <groupId>org.boundbox</groupId>
+      <artifactId>boundbox-library</artifactId>
+      <version>${boundbox.version}</version>
+      <scope>test</scope>
+    </dependency-->
+    <!-- >dependency>
+		<groupId>com.dp4j</groupId>
+		<artifactId>dp4j</artifactId>
+		<version>${dp4j.version}</version>
+		<scope>test</scope>
+	</dependency-->
+  </dependencies>
+  <build>
+      <plugins>
+          <!-- Make this jar executable -->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jar-plugin</artifactId>
+              <configuration>
+                  <!-- excludes>
+                        <exclude>**/*/*Test.class</exclude>
+                  </excludes -->
+                  <archive>
+                      <manifest>
+                          <addClasspath>true</addClasspath>
+                          <mainClass>downloader.Downloader</mainClass>
+                          <classpathPrefix>dependency-jars/</classpathPrefix>
+                      </manifest>
+                  </archive>
+              </configuration>
+          </plugin>
+
+          <!-- Copy project dependency -->
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-dependency-plugin</artifactId>
+              <version>2.5.1</version>
+              <executions>
+                  <execution>
+                      <id>copy-dependencies</id>
+                      <phase>package</phase>
+                      <goals>
+                          <goal>copy-dependencies</goal>
+                      </goals>
+                      <configuration>
+                          <!-- exclude junit, we need runtime dependency only -->
+                          <includeScope>runtime</includeScope>
+                          <outputDirectory>${project.build.directory}/dependency-jars/</outputDirectory>
+                      </configuration>
+                  </execution>
+              </executions>
+          </plugin>  
+    </plugins>      
+  </build>
+</project>
