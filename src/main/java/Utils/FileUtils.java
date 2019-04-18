@@ -82,7 +82,8 @@ public class FileUtils {
 	static char separator = '\\';
 	static char separator_rep = '/';
 	static {
-		if (File.separator.equals("\\")) {
+        //System.out.println(File.separator);
+		if (File.separator.equals("/")) {
 			separator = '/';
 			separator_rep = '\\';
 		}

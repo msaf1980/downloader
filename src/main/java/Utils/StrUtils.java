@@ -20,6 +20,7 @@ public class StrUtils {
 	    	 if (charArr[i] == c)
 	    		 charArr[i] = r;
 	     }
+         System.out.println(new String(charArr));
 	     return new String(charArr);
 	}
 	
